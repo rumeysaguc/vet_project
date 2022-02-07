@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+    <script src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Vet</title>
+
+    <div class="container">
+        <h1 style="margin-top: 30px;margin-bottom: 25px">Kayıtlı hayvan Listesi</h1>
+      <div class="input-group rounded">
+  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+  <span class="input-group-text border-0" id="search-addon">
+    <i class="fas fa-search"></i>
+  </span>
+</div>
+
+        <table class="table">
+            <thead>
+            <tr class="clickable-row">
+                <th scope="col">Sıra</th>
+                <th scope="col">Hayvan Sahibi</th>
+                <th scope="col">Ad</th>
+                <th scope="col">Tür</th>
+                <th scope="col">Yaş</th>
+                <th scope="col">Cins</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for animal in animals %}
+                <tr>
+                    <th scope="row"></th>
+                    <td>{{ animal.owner }}</td>
+                    <td>{{ animal.name }}</td>
+                    <td>{{ animal.type }}</td>
+                    <td>{{ animal.age }}</td>
+                    <td>{{ animal.genus }}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</head>
+<body>
+
+</body>
+</html>
