@@ -23,6 +23,7 @@ urlpatterns = [
     path('super/admin/', admin.site.urls),
     path('', main, name='mainPage'),
     path(_('account/'), include("allauth.urls")),
+    path(_('animal/'), include("animal.urls")),
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 
 ]
