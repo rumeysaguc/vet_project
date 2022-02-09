@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block list %}
+
+<div class="container">
+    <h1 style="margin-top: 30px;margin-bottom: 25px">Kayıtlı Hayvan Listesi</h1>
+    <button type="button" style="margin-bottom: 25px" onclick="location.href='{% url 'animal/:add-animal-page' %}'"
+            class="btn btn-primary">Yeni Kayıt
+    </button>
+
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Ara">
+    </div>
+
+    <table class="table" id="myTable">
+        <thead>
+        <tr class="clickable-row">
+            <th scope="col">Sıra</th>
+            <th scope="col">Hayvan Sahibi</th>
+            <th scope="col">Ad</th>
+            <th scope="col">Tür</th>
+            <th scope="col">Yaş</th>
+            <th scope="col">Cins</th>
+            <th scope="col">İşlem</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for animal in animals %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td><a style="color: #1a1e21; text-decoration: none"
+                       href="{% url 'animal/:animal-detail' animal.id %}"> {{ animal.owner }}</a></td>
+                <td><a style="color: #1a1e21; text-decoration: none"
+                       href="{% url 'animal/:animal-detail' animal.id %}">{{ animal.name }}</a></td>
+                <td>{{ animal.type }}</td>
+                <td>{{ animal.age }}</td>
+                <td>{{ animal.genus }}</td>
+                <td><button type="button" onclick="location.href='{% url 'animal/:delete-animal' animal.id %}'" class="btn btn-danger">Sil</button></td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

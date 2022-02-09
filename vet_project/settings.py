@@ -36,10 +36,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'allauth.socialaccount',
+    'phonenumber_field',
+    'phonenumbers',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'allauth',
     'allauth.account',
     'ckeditor',
-    'crispy_forms',
     'ckeditor_uploader',
     'animal',
 
@@ -49,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -82,7 +86,7 @@ WSGI_APPLICATION = 'vet_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'vetproject',
+        'NAME': 'vets',
         'USER': 'postgres',
         'PASSWORD': '12345',
         'HOST': 'localhost',
@@ -122,6 +126,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 import os
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
@@ -132,9 +137,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CKEDITOR_UPLOAD_PATH = "uploads/"
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'index'

@@ -3,6 +3,8 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
+from phonenumber_field.modelfields import PhoneNumberField
+
 
 class AnimalType(models.Model):
     name = models.CharField(max_length=256, blank=True, verbose_name=_('İsim'))
@@ -38,3 +40,16 @@ class Animal(models.Model):
                        (_('guncelle'), _('Güncelleme Yetkisi')))
 
 
+class Contact(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE, verbose_name=_('Hayvan Sahibi'))
+    phone = PhoneNumberField(null=False, blank=False, unique=True)
+    address = models.CharField(max_length=200,verbose_name=_("Adres"))
+
+    class Meta:
+        verbose_name = _('İletişim')
+        verbose_name_plural = _('İletişim Listesi')
+        default_permissions = ()
+        permissions = ((_('liste'), _('Listeleme Yetkisi')),
+                       (_('sil'), _('Silme Yetkisi')),
+                       (_('ekle'), _('Ekleme Yetkisi')),
+                       (_('guncelle'), _('Güncelleme Yetkisi')))

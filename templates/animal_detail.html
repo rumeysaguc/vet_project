@@ -1,110 +1,114 @@
+{% extends 'base.html' %}
 {% load static %}
-<div class="container">
-    <div class="main-body">
-        <link rel="stylesheet" href="{% static 'css/detail.css' %}">
-        <h3>Hayvan Sahibi Bilgileri</h3>
-        <div class="col-md-8">
-            <div class="card mb-3">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <h6 class="mb-0">Adı</h6>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                            {{ animal.owner.first_name }}
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <h6 class="mb-0">Email</h6>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                            {{ animal.owner.email }}
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <h6 class="mb-0">Telefon</h6>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                            {{ animal.owner }}
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <h6 class="mb-0">Adres</h6>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                            Bay Area, San Francisco, CA
-                        </div>
-                    </div>
-                    </hr>
-
-                </div>
-            </div>
-            <h3>Hayvan Bilgileri</h3>
-            <div class="col-md-8">
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="main-body">
+                <link rel="stylesheet" href="{% static 'css/detail.css' %}">
+                <h3 style="margin-top: 30px; margin-bottom: 15px;">Hayvan Sahibi Bilgileri</h3>
                 <div class="card mb-3">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Hayvan Sahibi</h6>
+                                <h6 class="mb-0">Adı</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                {{ animal.owner }}
+                                {{ user.first_name }}{{ user.last_name }}
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Hayvan Adı</h6>
+                                <h6 class="mb-0">Email</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                {{ animal.name }}
+                                {{ user.email }}
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Tür</h6>
+                                <h6 class="mb-0">Telefon</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                {{ animal.type }}
+                                {{ contact.phone }}
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Yaş</h6>
+                                <h6 class="mb-0">Adres</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                {{ animal.age }}
+                                {{ contact.address }}
                             </div>
                         </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Cins</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ animal.genus }}
-                            </div>
-                        </div>
-                        <hr>
-                        {#                  <div class="row">#}
-                        {#                    <div class="col-sm-12">#}
-                        {#                      <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>#}
-                        {#                    </div>#}
-                        {#                  </div>#}
+                        </hr>
+
                     </div>
                 </div>
+                {% for animal in animals %}
+
+                    <h3 style="margin-top: 30px; margin-bottom: 15px;">Hayvan Bilgileri</h3>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Hayvan Sahibi</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ animal.owner }}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Hayvan Adı</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ animal.name }}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Tür</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ animal.type }}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Yaş</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ animal.age }}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Cins</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ animal.genus }}
+                                </div>
+                            </div>
+
+                            <hr>
+                            {#                  <div class="row">#}
+                            {#                    <div class="col-sm-12">#}
+                            {#                      <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>#}
+                            {#                    </div>#}
+                            {#                  </div>#}
+                        </div>
+                    </div>
+                {% endfor %}
 
 
             </div>
-
         </div>
     </div>
-</div>
+{% endblock %}

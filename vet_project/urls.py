@@ -17,13 +17,17 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from django.utils.translation import gettext_lazy as _
 
-from vet_project.views import main
-
+from vet_project.views import main, login_user, signup, signup_page
+from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('super/admin/', admin.site.urls),
     path('', main, name='mainPage'),
+    path('login', login_user, name='login'),
+    path('signup-page', signup_page, name='signup-page'),
+    path('signup', signup, name='signup'),
     path(_('account/'), include("allauth.urls")),
     path(_('animal/'), include("animal.urls")),
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
+
 
 ]
